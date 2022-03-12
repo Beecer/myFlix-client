@@ -1,4 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
@@ -37,10 +42,19 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-director">
           <span className="label">Director: </span>
-          <span className="value">{movie.Director}</span>
+          <span className="value">{movie.Director.Name}</span>
         </div>
-        <button onClick={() => {onBackClick(null); }}>Back</button>
+        <button onClick={() => onBackClick(null)} >Back</button>
       </div>
     )
   }
-}
+};
+
+MovieView.propTypes={
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired
+  }).isRequired
+
+};
+
+export default MovieView;
