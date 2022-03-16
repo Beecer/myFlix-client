@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {  Button, Card } from "react-bootstrap";
+
 
 import './movie-view.scss';
 
@@ -24,28 +24,17 @@ export class MovieView extends React.Component {
     const {movie, onBackClick} = this.props;
 
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <button onClick={() => onBackClick(null)} >Back</button>
-      </div>
+      <Card className=" bg-light text-black" border='danger' style ={{width: '60rem', height: '30rem', marginTop: '10rem'}}>
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Body>
+        <Card.Title >{movie.Title}</Card.Title>
+        <Card.Subtitle className="mb-4 text-muted">{movie.Description}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 ">{movie.Genre.Name}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">{movie.Genre.Description}</Card.Subtitle><br/>
+        <Card.Subtitle className="mb-4">Director: {movie.Director.Name}</Card.Subtitle>
+        <Button onClick={() => onBackClick(null)} variant="outline-dark">Back</Button>
+      </Card.Body>
+      </Card>
     )
   }
 };
