@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Card, Container, Row, Col, Form, Button } from "react-bootstrap";
 import axios from 'axios';
 import './login-view.scss';
+import PropTypes from 'prop-types';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
