@@ -53,7 +53,7 @@ export function LoginView(props) {
   };
 
     return (
-      <Container>
+      
         <Row>
           <Col med={4}>
             <Card className="bg-light text-black" border='danger' style={{marginTop: 100, marginBottom: 50, borderRadius: 20}}>
@@ -79,14 +79,14 @@ export function LoginView(props) {
             </Card>
           </Col>
         </Row>
-      </Container>
+      
     );
   }
 
   LoginView.propTypes = {
     user: PropTypes.shape({
-      Username: PropTypes.string.isRequired,
-      Password: PropTypes.string.isRequired
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired
     }),
     onLoggedIn: PropTypes.func.isRequired,
   };
