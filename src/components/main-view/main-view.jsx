@@ -53,7 +53,7 @@ export class MainView extends React.Component {
     localStorage.removeItem('user');
     this.setState({
       user: null
-    })
+    });
   }
 
   getMovies(token) {
