@@ -15,10 +15,10 @@
   "bugs": {
     "url": "https://github.com/Beecer/myFlix-client/issues"
   },
+  "proxy": "https://m.media-amazon.com/images",
   "homepage": "https://github.com/Beecer/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.26.0",
-    "bootstrap": "^5.1.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.1",
