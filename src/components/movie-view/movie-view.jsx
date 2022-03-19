@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
@@ -14,14 +17,13 @@ export class MovieView extends React.Component {
     document.removeEventListener('keypress', this.keypressCallback);
   }
   
-
   render () {
     const {movie, onBackClick} = this.props;
 
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={`${movie.ImagePath}`} />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -41,6 +43,23 @@ export class MovieView extends React.Component {
         </div>
         <button onClick={() => {onBackClick(null); }}>Back</button>
       </div>
-    )
+    );
   }
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    Director: PropTypes.string.isRequired
+  }).isRequired,
+  Director:PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+  })
+}).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};
+
