@@ -37434,7 +37434,12 @@ class MovieCard extends _reactDefault.default.Component {
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Img, {
                         variant: "top",
-                        src: `${movie.ImagePath}`,
+                        src: movie.ImagePath,
+                        crossOrigin: "true",
+                        style: {
+                            width: '4rem',
+                            height: '10rem'
+                        },
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
                             lineNumber: 17
@@ -37541,6 +37546,7 @@ class MovieView extends _reactDefault.default.Component {
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                         src: `${movie.ImagePath}`,
+                        crossOrigin: "true",
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 26
