@@ -21,9 +21,9 @@ export class MovieView extends React.Component {
     const {movie, onBackClick} = this.props;
 
     return (
-      <div className="movie-view">
+      <div className="movie-view bg-light text-black" >
         <div className="movie-poster">
-          <img src={`${movie.ImagePath}`} crossOrigin="true"/>
+          <img src={movie.ImagePath} crossOrigin="true"/>
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -39,9 +39,9 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-director">
           <span className="label">Director: </span>
-          <span className="value">{movie.Director}</span>
+          <span className="value">{movie.Director.Name}</span>
         </div>
-        <button onClick={() => {onBackClick(null); }}>Back</button>
+        <button onClick={() => {onBackClick(null); }} variant="outline-dark">Back</button>
       </div>
     );
   }
@@ -54,7 +54,6 @@ MovieView.propTypes = {
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
-    Director: PropTypes.string.isRequired
   }).isRequired,
   Director:PropTypes.shape({
     Name: PropTypes.string.isRequired,
