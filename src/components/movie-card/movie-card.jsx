@@ -13,8 +13,8 @@ export class MovieCard extends React.Component {
 
     return ( 
       <CardGroup>
-      <Card className="bg-light text-black" border='danger' style={{ width: '14rem', height: '15rem',margin: '.5rem' }}>
-      <Card.Img  variant="top" src={movie.ImagePath} crossOrigin="true" style={{width: '4rem', height: '10rem'}}/>
+      <Card className="bg-light text-black" border='danger' style={{ width: '20rem', height: '20rem',margin: '.5rem' }}>
+      <Card.Img  variant="top" src={movie.ImagePath} crossOrigin="true" style={{width: '8rem', height: '12rem'}}/>
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{movie.Year}</Card.Subtitle>
