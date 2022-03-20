@@ -22915,8 +22915,6 @@ var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
-var _container = require("react-bootstrap/Container");
-var _containerDefault = parcelHelpers.interopDefault(_container);
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -22990,65 +22988,51 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
-        return(/*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
+        return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 85
             },
             __self: this,
-            children: [
-                selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                    md: 8,
+            children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                md: 10,
+                __source: {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 88
+                },
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                    movie: selectedMovie,
+                    onBackClick: (newSelectedMovie)=>{
+                        this.setSelectedMovie(newSelectedMovie);
+                    },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 88
+                        lineNumber: 89
+                    },
+                    __self: this
+                })
+            }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                    md: 4,
+                    __source: {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 93
                     },
                     __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                        movie: selectedMovie,
-                        onBackClick: (newSelectedMovie)=>{
-                            this.setSelectedMovie(newSelectedMovie);
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                        movie: movie,
+                        onMovieClick: (movie1)=>{
+                            this.setSelectedMovie(movie1);
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 89
+                            lineNumber: 94
                         },
                         __self: this
-                    })
-                }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                        md: 3,
-                        __source: {
-                            fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 93
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                            movie: movie,
-                            onMovieClick: (newSelectedMovie)=>{
-                                this.setSelectedMovie(newSelectedMovie);
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 94
-                            },
-                            __self: this
-                        }, movie._id)
-                    })
-                ),
-                /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                    variant: "outline-dark",
-                    onClick: ()=>{
-                        this.onLoggedOut();
-                    },
-                    __source: {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 99
-                    },
-                    __self: this,
-                    children: "Logout"
+                    }, movie._id)
                 })
-            ]
+            )
         }));
     }
 }
@@ -23059,7 +23043,7 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","../login-view/login-view":"054li","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"aHvq5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iR4UD","react-bootstrap/Col":"fbam0","react-bootstrap/Row":"c0x1x","react-bootstrap/Button":"9CzHT","react-bootstrap/Container":"2PRIq"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","../login-view/login-view":"054li","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"aHvq5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iR4UD","react-bootstrap/Col":"fbam0","react-bootstrap/Row":"c0x1x","react-bootstrap/Button":"9CzHT"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -37422,8 +37406,8 @@ class MovieCard extends _reactDefault.default.Component {
                 className: "bg-light text-black",
                 border: "danger",
                 style: {
-                    width: '14rem',
-                    height: '15rem',
+                    width: '20rem',
+                    height: '20rem',
                     margin: '.5rem'
                 },
                 __source: {
@@ -37437,8 +37421,8 @@ class MovieCard extends _reactDefault.default.Component {
                         src: movie.ImagePath,
                         crossOrigin: "true",
                         style: {
-                            width: '4rem',
-                            height: '10rem'
+                            width: '8rem',
+                            height: '12rem'
                         },
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
@@ -37530,7 +37514,7 @@ class MovieView extends _reactDefault.default.Component {
     render() {
         const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-            className: "movie-view",
+            className: "movie-view bg-light text-black",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 24
@@ -37545,7 +37529,7 @@ class MovieView extends _reactDefault.default.Component {
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                        src: `${movie.ImagePath}`,
+                        src: movie.ImagePath,
                         crossOrigin: "true",
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
@@ -37662,7 +37646,7 @@ class MovieView extends _reactDefault.default.Component {
                                 lineNumber: 42
                             },
                             __self: this,
-                            children: movie.Director
+                            children: movie.Director.Name
                         })
                     ]
                 }),
@@ -37670,6 +37654,7 @@ class MovieView extends _reactDefault.default.Component {
                     onClick: ()=>{
                         onBackClick(null);
                     },
+                    variant: "outline-dark",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 44
@@ -37687,8 +37672,7 @@ MovieView.propTypes = {
         Description: _propTypesDefault.default.string.isRequired,
         Genre: _propTypesDefault.default.shape({
             Name: _propTypesDefault.default.string.isRequired,
-            Description: _propTypesDefault.default.string.isRequired,
-            Director: _propTypesDefault.default.string.isRequired
+            Description: _propTypesDefault.default.string.isRequired
         }).isRequired,
         Director: _propTypesDefault.default.shape({
             Name: _propTypesDefault.default.string.isRequired
