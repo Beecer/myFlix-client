@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Card, Row, Col, Form, Button } from "react-bootstrap";
 import axios from 'axios';
 import './login-view.scss';
-import PropTypes from 'prop-types';
+
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -64,7 +64,7 @@ export function LoginView(props) {
                    <Form.Label>Username:</Form.Label>
                    <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} />
                    {/* code added here to display validation error */ }
-                   {usernameErr && <p>{passwordErr}</p>}
+                   {usernameErr && <p>{usernameErr}</p>}
                  </Form.Group>
                
                  <Form.Group controlId="formPassword">
@@ -83,10 +83,3 @@ export function LoginView(props) {
     );
   }
 
-  LoginView.propTypes = {
-    user: PropTypes.shape({
-      username: PropTypes.string.isRequired,
-      password: PropTypes.string.isRequired
-    }),
-    onLoggedIn: PropTypes.func.isRequired,
-  };
