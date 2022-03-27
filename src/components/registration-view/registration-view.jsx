@@ -1,19 +1,24 @@
 import React, {useState} from "react";
+import axios from "axios";
 import PropTypes from 'prop-types';
 import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
 
 import './registration-view.scss';
-import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export function RegistrationView(props) {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   //Declare hook for each input
-  const [usernameErr, setUsernameErr] = ('');
-  const [passwordErr, setPasswordErr] = ('');
-  const [emailErr, setEmailErr] = ('');
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [emailErr, setEmailErr] = useState('');
+  const [birthdayErr, setBirthdayErr] = useState('');
+
   
   const newUser = () => {
     let isReq = true; 
@@ -38,6 +43,10 @@ export function RegistrationView(props) {
       setEmailErr('Invalid Email');
       isReq = false; 
     }
+    if(!birthday){
+      setBirthdayErr('Add Birthday');
+      isReq = false;
+    } 
 
     return isReq;
   }
@@ -50,7 +59,7 @@ export function RegistrationView(props) {
     Username: username,
     Password: password,
     Email: email,
-    Birthday: date
+    Birthday: birthday
   })
     .then(response => {
       const data = response.data; 
@@ -75,7 +84,7 @@ export function RegistrationView(props) {
             <Card.Body>
              <Card.Title style={{textAlign: 'center'}}>Please Register</Card.Title>
              <Form className="registration-border">
-               <Form.Group controlId="formUsername">
+               <Form.Group controlId="formUsername" className="reg-form-inputs">
                  <Form.Label>Username:</Form.Label>
                  <Form.Control 
                    type="text"
@@ -87,7 +96,7 @@ export function RegistrationView(props) {
                    {usernameErr && <p>{usernameErr}</p>}
                </Form.Group>
 
-               <Form.Group>
+               <Form.Group controlId="formPassword">
                  <Form.Label>Password:</Form.Label>
                  <Form.Control 
                    type="text"
