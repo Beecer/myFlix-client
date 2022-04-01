@@ -1,23 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Col, Row, Figure, Button} from "react-bootstrap";
+import axios from "axios";
 
 function FavoriteMovies ({favoriteMovieList}) {
+  const removeFav = (id) => {
+    let token = localStorage.getItem('token');
+    let url = `https://mymoviesapp775.herokuapp.com/users/${localStorage.getItem('user')}/movies/${id}`;
+    axios.delete(url, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+  }
   return (
-   <div>
-     <h2>Favorite Movies</h2>
-       {favoriteMovieList.map(movies => {
+    <>
+   <Row>
+     <Col xs={12}>
+      <h4>Favorite Movies</h4>
+     </Col>
+    </Row>
+   <Row>
+       {favoriteMovieList.map(({ImagePath, Title, _id}) =>{
          return (
-           <div key={movies._id}>
-             <img src={movies.ImagePath} />
-             <Link to={`/movies/${movies._id}`}>
-               <h4>{movies.Title}</h4>
-             </Link>
-             <button variant="danger" onClick={() => removeFav(movies._id)}>Remove from the list</button>
-             </div>
+           <Col xs={12} md={6} lg={3} key={_id}>
+             <Figure>
+              <Link to={'/movies/${_id}'}>
+                <Figure.Image
+                  src={ImagePath}
+                  alt={Title}
+                />
+                <Figure.Caption>
+                  {Title}
+                </Figure.Caption>
+                </Link>
+             </Figure>
+             <button variant="danger" onClick={() => removeFav(_id)}>Remove from the list</button>
+             </Col>
          )
        })
        }
-   </div>
+   </Row>
+   </>
   )
  }
 
