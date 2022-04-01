@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
-import PropTypes from 'prop-types';
-import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
+
+import {Form, Button, Card, Container, Col, Row} from 'react-bootstrap';
 
 import './registration-view.scss';
 import { Link } from "react-router-dom";
@@ -17,10 +17,9 @@ export function RegistrationView(props) {
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
-  const [birthdayErr, setBirthdayErr] = useState('');
 
-  
-  const newUser = () => {
+
+  const validate = () => {
     let isReq = true; 
     if(!username){
       setUsernameErr('Create Username');
@@ -32,7 +31,7 @@ export function RegistrationView(props) {
     if(!password){
       setPasswordErr('Create Password(Min 6 characters)');
       isReq=false;
-    }else if (password.length , 6){
+    }else if (password.length < 6){
       setPasswordErr('Password must be 6 characters long');
       isReq=false;
     }
@@ -40,20 +39,16 @@ export function RegistrationView(props) {
       setEmailErr('Add Email');
       isReq = false;
     } else if(email.indexOf('@') === -1){
-      setEmailErr('Invalid Email');
+      setEmail('Invalid Email');
       isReq = false; 
     }
-    if(!birthday){
-      setBirthdayErr('Add Birthday');
-      isReq = false;
-    } 
-
+   
     return isReq;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isReq = newUser();
+    const isReq = validate();
     if (isReq){
     axios.post('https://mymoviesapp775.herokuapp.com/users',{
     Username: username,
@@ -63,23 +58,24 @@ export function RegistrationView(props) {
   })
     .then(response => {
       const data = response.data; 
+      props.onLoggedIn(data);
       console.log(data);
       alert('Success! Please Login.')
       window.open('/', '_self');
       //The second argument '_self' is necessary so that the page will 
       //open in the current tab
     })
-    .catch(e => {
-      console.log('error registering the user');
+    .catch(response => {
+      console.error(response);
       alert('something wasn\'t entered right');
     });
   };
-
+}
   return(
     <Container>
       <Row>
-        <Col> 
-         <CardGroup>
+        <Col med={4}> 
+         
            <Card className="bg-light text-black" border='danger' style={{marginTop: 100, marginBottom: 50, borderRadius: 20}}>
             <Card.Body>
              <Card.Title style={{textAlign: 'center'}}>Please Register</Card.Title>
@@ -120,7 +116,16 @@ export function RegistrationView(props) {
                    {emailErr && <p>{emailErr}</p>}
                </Form.Group>
 
-               <Button variant="primary" type="submit"
+               <Form.Group>
+                 <Form.Label>Birthday</Form.Label>
+                 <Form.Control
+                  type="date"
+                  value={birthday}
+                  onChange={e => setBirthday(e.target.value)} 
+                  placeholder="Enter Birthday" />
+               </Form.Group>
+
+               <Button variant="primary" style={{marginTop: 50, marginBottom: 25}}type="submit"
                  onClick={handleSubmit}>
                  Submit
                </Button>
@@ -131,20 +136,11 @@ export function RegistrationView(props) {
             </Card.Body>
            </Card>
            
-          </CardGroup>
+          
         </Col>
       </Row>
     </Container>
 
-  )
+  );
   }
-}
 
-RegistrationView.PropTypes ={
-  register: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired 
-  }),
-  onRegistration: PropTypes.func
-};
