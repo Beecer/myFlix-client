@@ -2,18 +2,19 @@ import React from "react";
 import axios from "axios";
 
 import{ BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
-
+import { ProfileView } from "../profile-view/profile-view";
 
 import Col  from 'react-bootstrap/Col'; 
 import Row from 'react-bootstrap/Row';
-import Button  from "react-bootstrap/Button";
+import Container  from "react-bootstrap/Container";
+import { NavbarView } from "../navbar-view/navbar-view";
+
 
 export class MainView extends React.Component {
 
@@ -41,6 +42,7 @@ export class MainView extends React.Component {
         
       });
     }
+
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if(accessToken !== null) {
@@ -75,9 +77,9 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
     return (
-      <Router> 
-        <div className="main-view">
-        <Button variant="danger" onClick={() => { this.onLoggedOut()}}>Logout</Button> 
+      <Router>
+        <NavbarView user={user} /> 
+        <Container>
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if(!user) return  <Col>
@@ -127,12 +129,31 @@ export class MainView extends React.Component {
               <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()}/>
             </Col>
           }} />
+
+          <Route path='/users/:username'
+        render={({history, match}) => {
+          if(!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+          if(movies.length === 0) return <div className="main-view" />
+          return<Col>
+          
+          <ProfileView history={history} movies={movies} user={user === match.params.username} />
+          </Col>
+        }} />
+
+          <Route path={'/user-update/${user}'}
+        render={({match, history}) => {
+          if(!user) return <Redirect to="/" />
+          return <Col>
+            <UserUpdate user={user}
+            onBackClick={() => history.goBack()}/>
+          </Col>
+        }} />
          </Row>
-         </div>
+         </Container>
         </Router> 
           
-       );    
-     }
-  }
+          );    
+        }
+      }
       
-export default MainView;
+      export default MainView;
