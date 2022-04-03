@@ -16,7 +16,7 @@ import Container  from "react-bootstrap/Container";
 import { NavbarView } from "../navbar-view/navbar-view";
 
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
   constructor() {
     super();
