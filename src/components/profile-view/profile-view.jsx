@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-
+import React, {useState} from "react";
 import { Button }  from "react-bootstrap";
+import './profile-view.scss';
 
-import {UpdateUser} from './update-user';
-import {UserInfo} from './user-info';
-import {FavoriteMovies} from './favorite-movies';
+//import {UpdateUser} from './update-user';
+//import {UserInfo} from './user-info';
+//import {FavoriteMovies} from './favorite-movies';
 
 
 export function ProfileView(props) {
