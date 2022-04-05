@@ -41122,7 +41122,7 @@ function ProfileView(props) {
                 userdata: userdata,
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 97
+                    lineNumber: 98
                 },
                 __self: this
             }),
@@ -41132,14 +41132,14 @@ function ProfileView(props) {
                 handleUpdate: handleUpdate,
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 100
+                    lineNumber: 101
                 },
                 __self: this
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 103
+                    lineNumber: 104
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -41149,7 +41149,7 @@ function ProfileView(props) {
                     onClick: deleteProfile,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 104
+                        lineNumber: 105
                     },
                     __self: this,
                     children: "Delete Profile"
@@ -41160,27 +41160,24 @@ function ProfileView(props) {
                 removeFav: removeFav,
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 110
+                    lineNumber: 111
                 },
                 __self: this
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 112
+                    lineNumber: 116
                 },
                 __self: this,
-                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    variant: "outline-danger",
-                    onClick: ()=>{
-                        onBackClick();
-                    },
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                    href: "/",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 113
+                        lineNumber: 117
                     },
                     __self: this,
-                    children: "Back to Movies"
+                    children: "Back to Movie"
                 })
             })
         ]
@@ -41257,8 +41254,6 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Username",
                             defaultValue: user.Username,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 16
@@ -41288,8 +41283,6 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Password",
                             defaultValue: user.Password,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 25
@@ -41319,8 +41312,6 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Email",
                             defaultValue: user.Email,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 34
