@@ -17,7 +17,7 @@ export function UpdateUser(props){
            type='text'
            name='Username'
            defaultValue={user.Username}
-          /* onChange={e => handleUpdate(e)}*/ />
+           onChange={e => handleUpdate(e)} />
         </Form.Group>
        
         <Form.Group controlId="formPassword" className="mb-3">
@@ -26,7 +26,7 @@ export function UpdateUser(props){
            type='text'
            name='Password'
            defaultValue={user.Password}
-          /* onChange={e => handleUpdate(e)}*/ />
+           onChange={e => handleUpdate(e)} />
         </Form.Group>
 
         <Form.Group controlId="formEmail" className="mb-3">
@@ -35,7 +35,7 @@ export function UpdateUser(props){
            type='text'
            name='Email'
            defaultValue={user.Email}
-           /*onChange={e => handleUpdate(e)}*/ />
+           onChange={e => handleUpdate(e)}/>
         </Form.Group>
       
         <Button variant="primary" type="submit" onClick={handleSubmit}>
