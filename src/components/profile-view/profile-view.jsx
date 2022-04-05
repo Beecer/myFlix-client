@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {  Button } from "react-bootstrap";
 import axios from "axios";
 import './profile-view.scss';
+import { Nav } from "react-bootstrap";
 
 import {UserData} from './user-data';
 import {UpdateUser} from './update-user';
@@ -108,9 +109,12 @@ return (
 
         {/* List of favorite movies */}
         <FavoriteMovies favoriteMoviesList={favoriteMoviesList} removeFav={removeFav} />
+ 
 
+ 
+        {/* Link Back to Movies */}
         <div>
-            <Button variant="outline-danger" onClick={() => { onBackClick();}}>Back to Movies</Button>
+        <Nav.Link href="/">Back to Movie</Nav.Link>
         </div>
 
     </>
