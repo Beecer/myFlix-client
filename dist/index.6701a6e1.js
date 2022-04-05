@@ -41085,7 +41085,7 @@ function ProfileView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         _axiosDefault.default.put(`https://mymoviesapp775.herokuapp.com/users/${userdata.Username}`, updatedUser).then((response)=>{
-            setUserdata(response.data);
+            props.updateUser(response.data);
             alert('Profile updated');
         }).catch((e1)=>{
             console.log(e1);
@@ -41167,14 +41167,14 @@ function ProfileView(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 116
+                    lineNumber: 114
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
                     href: "/",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 117
+                        lineNumber: 115
                     },
                     __self: this,
                     children: "Back to Movie"
@@ -41254,6 +41254,8 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Username",
                             defaultValue: user.Username,
+                            onChange: (e)=>handleUpdate(e)
+                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 16
@@ -41283,6 +41285,8 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Password",
                             defaultValue: user.Password,
+                            onChange: (e)=>handleUpdate(e)
+                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 25
@@ -41312,6 +41316,8 @@ function UpdateUser(props) {
                             type: "text",
                             name: "Email",
                             defaultValue: user.Email,
+                            onChange: (e)=>handleUpdate(e)
+                            ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 34
