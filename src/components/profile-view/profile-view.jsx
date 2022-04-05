@@ -50,7 +50,7 @@ export function ProfileView(props) {
     e.preventDefault();
     axios.put(`https://mymoviesapp775.herokuapp.com/users/${userdata.Username}`, updatedUser)
     .then(response => {
-      setUserdata(response.data);
+      props.updateUser(response.data);
       alert('Profile updated');
     })
     .catch(e => {
@@ -109,8 +109,6 @@ return (
 
         {/* List of favorite movies */}
         <FavoriteMovies favoriteMoviesList={favoriteMoviesList} removeFav={removeFav} />
- 
-
  
         {/* Link Back to Movies */}
         <div>
