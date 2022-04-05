@@ -24809,7 +24809,12 @@ function LoginView(props) {
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
                 className: "bg-light text-black",
-                c: true,
+                border: "danger",
+                style: {
+                    marginTop: 100,
+                    marginBottom: 50,
+                    borderRadius: 20
+                },
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
                     lineNumber: 60
