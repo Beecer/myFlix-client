@@ -4,14 +4,15 @@ import axios from "axios";
 import './profile-view.scss';
 import { Nav } from "react-bootstrap";
 
+
 import {UserData} from './user-data';
-import {UpdateUser} from './update-user';
+import {UpdatedUser} from './update-user';
 import {FavoriteMovies} from './favorite-movies';
 
 
 export function ProfileView(props) {
 
-  const [userdata, setUserdata] = useState({});
+  const [userdata, setUserdata] = useState('');
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
  
@@ -50,7 +51,7 @@ export function ProfileView(props) {
     e.preventDefault();
     axios.put(`https://mymoviesapp775.herokuapp.com/users/${userdata.Username}`, updatedUser)
     .then(response => {
-      props.updateUser(response.data);
+      setUserdata(response.data);
       alert('Profile updated');
     })
     .catch(e => {
@@ -98,7 +99,7 @@ return (
         <UserData userdata={userdata} />
 
         {/* Form to update user data */}
-        <UpdateUser userdata={userdata} handleSubmit={handleSubmit} handleUpdate={handleUpdate} />
+        <UpdatedUser userdata={userdata} handleSubmit={handleSubmit} handleUpdate={handleUpdate} />
 
         {/* Button to delete user */}
         <div>
@@ -112,7 +113,7 @@ return (
  
         {/* Link Back to Movies */}
         <div>
-        <Nav.Link href="/">Back to Movie</Nav.Link>
+        <Nav.Link href="/">Back to Movies</Nav.Link>
         </div>
 
     </>
