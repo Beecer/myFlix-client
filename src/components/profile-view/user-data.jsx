@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Row, Card } from "react-bootstrap";
 
-export function UserData({userdata}) {
-
+export function UserData(props) {
+  const userdata = props.userdata
   return (
     <Col lg={8}>
       <Row>
