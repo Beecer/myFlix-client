@@ -41246,6 +41246,17 @@ function UpdatedUser(props) {
                                 lineNumber: 16
                             },
                             __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            variant: "primary",
+                            type: "button",
+                            onClick: handleUpdate,
+                            __source: {
+                                fileName: "src/components/profile-view/update-user.jsx",
+                                lineNumber: 22
+                            },
+                            __self: this,
+                            children: "Update"
                         })
                     ]
                 }),
@@ -41254,14 +41265,14 @@ function UpdatedUser(props) {
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 24
+                        lineNumber: 27
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 25
+                                lineNumber: 28
                             },
                             __self: this,
                             children: "Password:"
@@ -41274,9 +41285,20 @@ function UpdatedUser(props) {
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 26
+                                lineNumber: 29
                             },
                             __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            variant: "primary",
+                            type: "button",
+                            onClick: handleUpdate,
+                            __source: {
+                                fileName: "src/components/profile-view/update-user.jsx",
+                                lineNumber: 35
+                            },
+                            __self: this,
+                            children: "Update"
                         })
                     ]
                 }),
@@ -41285,14 +41307,14 @@ function UpdatedUser(props) {
                     className: "mb-3",
                     __source: {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 34
+                        lineNumber: 40
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 35
+                                lineNumber: 41
                             },
                             __self: this,
                             children: "Email:"
@@ -41305,9 +41327,20 @@ function UpdatedUser(props) {
                             ,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 36
+                                lineNumber: 42
                             },
                             __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            variant: "primary",
+                            type: "button",
+                            onClick: handleUpdate,
+                            __source: {
+                                fileName: "src/components/profile-view/update-user.jsx",
+                                lineNumber: 48
+                            },
+                            __self: this,
+                            children: "Update"
                         })
                     ]
                 }),
@@ -41317,7 +41350,7 @@ function UpdatedUser(props) {
                     onClick: handleSubmit,
                     __source: {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 44
+                        lineNumber: 53
                     },
                     __self: this,
                     children: "Submit"
