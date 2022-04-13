@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  Button } from "react-bootstrap";
+import {  Button, Col, Row, Card, Container } from "react-bootstrap";
 import axios from "axios";
 import './profile-view.scss';
 import { Nav } from "react-bootstrap";
@@ -12,7 +12,7 @@ import {FavoriteMovies} from './favorite-movies';
 
 export function ProfileView(props) {
 
-  const [userdata, setUserdata] = useState('');
+  const [userdata, setUserdata] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
  
@@ -26,6 +26,7 @@ export function ProfileView(props) {
     })
       .then(response => {
         setUserdata(response.data);
+        setUpdatedUser(response.data)
         setFavoriteMoviesList(props.movies.filter(m => response.data.FavoriteMovies.includes(m._id)));
       })
       .catch(err => {
@@ -82,7 +83,7 @@ export function ProfileView(props) {
   }
 
   const removeFav = (id) => {
-    axios.delete(`https://femmovies.herokuapp.com/users/${userdata.Username}/movies/${id}`)
+    axios.delete(`https://mymoviesapp775.herokuapp.com/users/${userdata.Username}/movies/${id}`)
         .then(() => {
             // Change state of favoriteMovieList to render component
             setFavoriteMoviesList(favoriteMoviesList.filter(movie => movie._id != id));
@@ -94,29 +95,36 @@ export function ProfileView(props) {
 
 
 return (
-    <>
+    
+    <Container fluid>
+    <Row>
+    <Col med={4}>
+     
         {/* Display userdata */}
         <UserData userdata={userdata} />
 
-        {/* Form to update user data */}
-        <UpdatedUser userdata={userdata} handleSubmit={handleSubmit} handleUpdate={handleUpdate} />
-
-        {/* Button to delete user */}
-        <div>
-            <Button className="mb-3" variant="danger" type="submit" onClick={deleteProfile}>
-                Delete Profile
-            </Button>
-        </div>
-
         {/* List of favorite movies */}
         <FavoriteMovies favoriteMoviesList={favoriteMoviesList} removeFav={removeFav} />
- 
+        
+        {/* Form to update user data */}
+        <UpdatedUser userdata={userdata} handleSubmit={handleSubmit} handleUpdate={handleUpdate} />
+       
+
         {/* Link Back to Movies */}
         <div>
         <Nav.Link href="/">Back to Movies</Nav.Link>
         </div>
 
-    </>
+        {/* Button to delete user */}
+        <div>
+            <Button className="mb-3" variant="danger" type="submit" style={{margin: 200}} onClick={deleteProfile}>
+                Delete Profile
+            </Button>
+        </div>
+    </Col>
+    </Row>
+    </Container>
+    
 );
 
 
