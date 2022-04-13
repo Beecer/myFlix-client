@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col, Row, Card } from "react-bootstrap";
 
 export function UpdatedUser(props){
   const user = props.userdata
@@ -7,9 +7,12 @@ export function UpdatedUser(props){
   
   return (
     <>
-    
-      <Form className="profile-form" onSubmit={(e) =>handleSubmit(e)} border='danger' style={{marginTop: 50, marginBottom: 50}}>
-      <h5>Update Profile</h5>
+      <Col lg={12}>
+        <Row>
+          <Card className="bg-light text-black" border='danger' style={{ textAlign: 'left', marginTop: 20 }}>
+      <Card.Title style={{marginTop: 10, textAlign: "center"}}>Update Profile</Card.Title>
+          
+      <Form className="profile-form" onSubmit={(e) =>handleSubmit(e)} border='danger' style={{margin: 20}}>
     
         <Form.Group controlId="formUsername" className="mb-3">
           <Form.Label>Username:</Form.Label>
@@ -19,9 +22,6 @@ export function UpdatedUser(props){
            defaultValue={user.Username}
            onChange={e => handleUpdate(e)} 
            />
-           <Button variant="primary" type="button" onClick={handleUpdate}>
-          Update
-        </Button>
         </Form.Group>
        
         <Form.Group controlId="formPassword" className="mb-3">
@@ -29,12 +29,9 @@ export function UpdatedUser(props){
           <Form.Control
            type='text'
            name='Password'
-           defaultValue={user.Password}
+           placeholder="New Password (required when updating profile info)"
            onChange={e => handleUpdate(e)} 
            />
-           <Button variant="primary" type="button" onClick={handleUpdate}>
-          Update
-        </Button>
         </Form.Group>
 
         <Form.Group controlId="formEmail" className="mb-3">
@@ -45,15 +42,16 @@ export function UpdatedUser(props){
            defaultValue={user.Email}
            onChange={e => handleUpdate(e)}         
            />
-           <Button variant="primary" type="button" onClick={handleUpdate}>
-          Update
-        </Button>
         </Form.Group>
       
         <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Submit
+          Update
         </Button>
-    </Form> 
+        <h5>After update, please log out, then log back in</h5>
+    </Form>
+    </Card>
+    </Row>
+    </Col> 
     </>
   )
 }
