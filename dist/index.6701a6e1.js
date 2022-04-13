@@ -40924,7 +40924,8 @@ var _favoriteMovies = require("./favorite-movies");
 var _s = $RefreshSig$();
 function ProfileView(props) {
     _s();
-    const [userdata, setUserdata] = _react.useState('');
+    const [userdata, setUserdata] = _react.useState({
+    });
     const [updatedUser, setUpdatedUser] = _react.useState({
     });
     const [favoriteMoviesList, setFavoriteMoviesList] = _react.useState([]);
@@ -40935,6 +40936,7 @@ function ProfileView(props) {
             cancelToken: cancelToken
         }).then((response)=>{
             setUserdata(response.data);
+            setUpdatedUser(response.data);
             setFavoriteMoviesList(props.movies.filter((m)=>response.data.FavoriteMovies.includes(m._id)
             ));
         }).catch((err)=>{
@@ -40975,7 +40977,7 @@ function ProfileView(props) {
         });
     };
     const removeFav = (id)=>{
-        _axiosDefault.default.delete(`https://femmovies.herokuapp.com/users/${userdata.Username}/movies/${id}`).then(()=>{
+        _axiosDefault.default.delete(`https://mymoviesapp775.herokuapp.com/users/${userdata.Username}/movies/${id}`).then(()=>{
             // Change state of favoriteMovieList to render component
             setFavoriteMoviesList(favoriteMoviesList.filter((movie)=>movie._id != id
             ));
@@ -40983,74 +40985,98 @@ function ProfileView(props) {
             console.log(e);
         });
     };
-    return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsx(_userData.UserData, {
-                userdata: userdata,
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
+        fluid: true,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 99
+        },
+        __self: this,
+        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+            __source: {
+                fileName: "src/components/profile-view/profile-view.jsx",
+                lineNumber: 100
+            },
+            __self: this,
+            children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
+                med: 4,
                 __source: {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 99
-                },
-                __self: this
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx(_updateUser.UpdatedUser, {
-                userdata: userdata,
-                handleSubmit: handleSubmit,
-                handleUpdate: handleUpdate,
-                __source: {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 102
-                },
-                __self: this
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                __source: {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 105
+                    lineNumber: 101
                 },
                 __self: this,
-                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    className: "mb-3",
-                    variant: "danger",
-                    type: "submit",
-                    onClick: deleteProfile,
-                    __source: {
-                        fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 106
-                    },
-                    __self: this,
-                    children: "Delete Profile"
-                })
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMovies.FavoriteMovies, {
-                favoriteMoviesList: favoriteMoviesList,
-                removeFav: removeFav,
-                __source: {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 112
-                },
-                __self: this
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                __source: {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 115
-                },
-                __self: this,
-                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                    href: "/",
-                    __source: {
-                        fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 116
-                    },
-                    __self: this,
-                    children: "Back to Movies"
-                })
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx(_userData.UserData, {
+                        userdata: userdata,
+                        __source: {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 104
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMovies.FavoriteMovies, {
+                        favoriteMoviesList: favoriteMoviesList,
+                        removeFav: removeFav,
+                        __source: {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 107
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_updateUser.UpdatedUser, {
+                        userdata: userdata,
+                        handleSubmit: handleSubmit,
+                        handleUpdate: handleUpdate,
+                        __source: {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 110
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                        __source: {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 114
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                            href: "/",
+                            __source: {
+                                fileName: "src/components/profile-view/profile-view.jsx",
+                                lineNumber: 115
+                            },
+                            __self: this,
+                            children: "Back to Movies"
+                        })
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                        __source: {
+                            fileName: "src/components/profile-view/profile-view.jsx",
+                            lineNumber: 119
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            className: "mb-3",
+                            variant: "danger",
+                            type: "submit",
+                            style: {
+                                margin: 200
+                            },
+                            onClick: deleteProfile,
+                            __source: {
+                                fileName: "src/components/profile-view/profile-view.jsx",
+                                lineNumber: 120
+                            },
+                            __self: this,
+                            children: "Delete Profile"
+                        })
+                    })
+                ]
             })
-        ]
+        })
     }));
 }
-_s(ProfileView, "pM5rssD80Ll334c4j1AjpmRcZq4=");
+_s(ProfileView, "kJHvV1VbW7jPQYWWNpQqtSTzpho=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -41078,7 +41104,7 @@ var _reactBootstrap = require("react-bootstrap");
 function UserData(props) {
     const userdata = props.userdata;
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-        lg: 8,
+        lg: 12,
         __source: {
             fileName: "src/components/profile-view/user-data.jsx",
             lineNumber: 7
@@ -41109,7 +41135,7 @@ function UserData(props) {
                         },
                         __source: {
                             fileName: "src/components/profile-view/user-data.jsx",
-                            lineNumber: 10
+                            lineNumber: 11
                         },
                         __self: this,
                         children: "Profile Card"
@@ -41123,14 +41149,14 @@ function UserData(props) {
                         },
                         __source: {
                             fileName: "src/components/profile-view/user-data.jsx",
-                            lineNumber: 11
+                            lineNumber: 12
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/profile-view/user-data.jsx",
-                                    lineNumber: 12
+                                    lineNumber: 13
                                 },
                                 __self: this,
                                 children: [
@@ -41141,7 +41167,7 @@ function UserData(props) {
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/profile-view/user-data.jsx",
-                                    lineNumber: 13
+                                    lineNumber: 14
                                 },
                                 __self: this,
                                 children: [
@@ -41152,7 +41178,7 @@ function UserData(props) {
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/profile-view/user-data.jsx",
-                                    lineNumber: 14
+                                    lineNumber: 15
                                 },
                                 __self: this,
                                 children: [
@@ -41195,168 +41221,178 @@ function UpdatedUser(props) {
     const user = props.userdata;
     const { handleSubmit , handleUpdate  } = props;
     return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
-            className: "profile-form",
-            onSubmit: (e)=>handleSubmit(e)
-            ,
-            border: "danger",
-            style: {
-                marginTop: 50,
-                marginBottom: 50
-            },
-            __source: {
-                fileName: "src/components/profile-view/update-user.jsx",
-                lineNumber: 11
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx("h5", {
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                lg: 12,
+                __source: {
+                    fileName: "src/components/profile-view/update-user.jsx",
+                    lineNumber: 10
+                },
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 12
+                        lineNumber: 11
                     },
                     __self: this,
-                    children: "Update Profile"
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    controlId: "formUsername",
-                    className: "mb-3",
-                    __source: {
-                        fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 14
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 15
-                            },
-                            __self: this,
-                            children: "Username:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                            type: "text",
-                            name: "Username",
-                            defaultValue: user.Username,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 16
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                            variant: "primary",
-                            type: "button",
-                            onClick: handleUpdate,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 22
-                            },
-                            __self: this,
-                            children: "Update"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    controlId: "formPassword",
-                    className: "mb-3",
-                    __source: {
-                        fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 27
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 28
-                            },
-                            __self: this,
-                            children: "Password:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                            type: "text",
-                            name: "Password",
-                            defaultValue: user.Password,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 29
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                            variant: "primary",
-                            type: "button",
-                            onClick: handleUpdate,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 35
-                            },
-                            __self: this,
-                            children: "Update"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    controlId: "formEmail",
-                    className: "mb-3",
-                    __source: {
-                        fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 40
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 41
-                            },
-                            __self: this,
-                            children: "Email:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                            type: "text",
-                            name: "Email",
-                            defaultValue: user.Email,
-                            onChange: (e)=>handleUpdate(e)
-                            ,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 42
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                            variant: "primary",
-                            type: "button",
-                            onClick: handleUpdate,
-                            __source: {
-                                fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 48
-                            },
-                            __self: this,
-                            children: "Update"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    variant: "primary",
-                    type: "submit",
-                    onClick: handleSubmit,
-                    __source: {
-                        fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 53
-                    },
-                    __self: this,
-                    children: "Submit"
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
+                        className: "bg-light text-black",
+                        border: "danger",
+                        style: {
+                            textAlign: 'left',
+                            marginTop: 20
+                        },
+                        __source: {
+                            fileName: "src/components/profile-view/update-user.jsx",
+                            lineNumber: 12
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                                style: {
+                                    marginTop: 10,
+                                    textAlign: "center"
+                                },
+                                __source: {
+                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    lineNumber: 13
+                                },
+                                __self: this,
+                                children: "Update Profile"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
+                                className: "profile-form",
+                                onSubmit: (e)=>handleSubmit(e)
+                                ,
+                                border: "danger",
+                                style: {
+                                    margin: 20
+                                },
+                                __source: {
+                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    lineNumber: 15
+                                },
+                                __self: this,
+                                children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                        controlId: "formUsername",
+                                        className: "mb-3",
+                                        __source: {
+                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            lineNumber: 17
+                                        },
+                                        __self: this,
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 18
+                                                },
+                                                __self: this,
+                                                children: "Username:"
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                type: "text",
+                                                name: "Username",
+                                                defaultValue: user.Username,
+                                                onChange: (e)=>handleUpdate(e)
+                                                ,
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 19
+                                                },
+                                                __self: this
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                        controlId: "formPassword",
+                                        className: "mb-3",
+                                        __source: {
+                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            lineNumber: 27
+                                        },
+                                        __self: this,
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 28
+                                                },
+                                                __self: this,
+                                                children: "Password:"
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                type: "text",
+                                                name: "Password",
+                                                placeholder: "New Password (required when updating profile info)",
+                                                onChange: (e)=>handleUpdate(e)
+                                                ,
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 29
+                                                },
+                                                __self: this
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                        controlId: "formEmail",
+                                        className: "mb-3",
+                                        __source: {
+                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            lineNumber: 37
+                                        },
+                                        __self: this,
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 38
+                                                },
+                                                __self: this,
+                                                children: "Email:"
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                type: "text",
+                                                name: "Email",
+                                                defaultValue: user.Email,
+                                                onChange: (e)=>handleUpdate(e)
+                                                ,
+                                                __source: {
+                                                    fileName: "src/components/profile-view/update-user.jsx",
+                                                    lineNumber: 39
+                                                },
+                                                __self: this
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                        variant: "primary",
+                                        type: "submit",
+                                        onClick: handleSubmit,
+                                        __source: {
+                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            lineNumber: 47
+                                        },
+                                        __self: this,
+                                        children: "Update"
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsx("h5", {
+                                        __source: {
+                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            lineNumber: 50
+                                        },
+                                        __self: this,
+                                        children: "After update, please log out, then log back in"
+                                    })
+                                ]
+                            })
+                        ]
+                    })
                 })
-            ]
-        })
+            })
+        ]
     }));
 }
 _c = UpdatedUser;
