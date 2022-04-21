@@ -41695,6 +41695,6 @@ $RefreshReg$(_c, "NavbarView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./navbar-view.scss":"eDP1C","@parcel/transformer-js/src/esmodule-helpers.js":"aHvq5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iR4UD","react-router-dom":"cpyQW"}],"eDP1C":[function() {},{}]},["3gSC1","cAxXl","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","./navbar-view.scss":"eDP1C","@parcel/transformer-js/src/esmodule-helpers.js":"aHvq5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iR4UD"}],"eDP1C":[function() {},{}]},["3gSC1","cAxXl","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
