@@ -7,7 +7,7 @@ import { CardGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 import './movie-card.scss';
-
+import axios from "axios";
 
 export class MovieCard extends React.Component {
   render() {
@@ -15,15 +15,18 @@ export class MovieCard extends React.Component {
 
     return ( 
       <CardGroup>
-      <Card className="bg-light text-black" border='danger' style={{ width: '20rem', height: '20rem',margin: '.5rem' }}>
+      <Card className=" movie-view bg-light text-black justify-content-md-center" border='danger' style={{ width: '25rem', height: '27rem',margin: '.5rem' }}>
       <Card.Img  variant="top" src={movie.ImagePath} crossOrigin="true" style={{width: '8rem', height: '12rem'}}/>
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{movie.Year}</Card.Subtitle>
           <Link to={`/movies/${movie._id}`}>
-          <Button variant="link">Details</Button>
+          <Button variant="link" style={{textAlign: 'center'}}>Details</Button>
           </Link>
         </Card.Body>
+        <Card.Footer>
+          <Button variant="danger" value={movie._id} onClick={() => this.addFavoriteMovies(movie)}>Add to Favorites</Button>
+        </Card.Footer>
       </Card>
       </CardGroup>
     ); 
