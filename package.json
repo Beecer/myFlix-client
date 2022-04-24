@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Beecer/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.26.0",
+    "parcel": "^2.0.0-rc.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.1",
@@ -29,6 +30,6 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    
   }
 }
