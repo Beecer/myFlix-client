@@ -15,7 +15,7 @@ export function FavoriteMovies({favoriteMoviesList, removeFav}) {
        {favoriteMoviesList.map(movie => {
          return (
            <Col xs={12} md={6} lg={3} key={_id}>
-             <Card className="bg-light text-black" border='danger' style={{ width: '20rem', height: '20rem',margin: '.5rem' }}>
+             <Card className="bg-light text-black" border='danger' style={{ width: '25rem', height: '27rem',margin: '.5rem' }}>
                 <Card.Img  variant="top" src={movie.ImagePath} crossOrigin="true" style={{width: '8rem', height: '12rem'}}/>
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
